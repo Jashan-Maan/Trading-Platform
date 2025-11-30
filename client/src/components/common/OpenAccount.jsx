@@ -1,5 +1,3 @@
-import React from "react";
-
 const OpenAccount = () => {
   return (
     <section className="container mx-auto px-4 lg:px-20">

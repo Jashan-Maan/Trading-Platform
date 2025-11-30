@@ -1,12 +1,13 @@
 import { useState } from "react";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 import { MdOutlineClose, MdMenu } from "react-icons/md";
-import kiteLogo from "../assets/kite-logo.svg";
-import consoleLogo from "../assets/console.svg";
-import kiteConnectLogo from "../assets/kite-connect.svg";
-import coinLogo from "../assets/coin.svg";
-import varsityLogo from "../assets/varsity-logo.png";
-import TradingQNA from "../assets/tqna.png";
+import kiteLogo from "../../assets/kite-logo.svg";
+import consoleLogo from "../../assets/console.svg";
+import kiteConnectLogo from "../../assets/kite-connect.svg";
+import coinLogo from "../../assets/coin.svg";
+import varsityLogo from "../../assets/varsity-logo.png";
+import TradingQNA from "../../assets/tqna.png";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,28 +18,43 @@ const Navbar = () => {
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 md:px-16 lg:px-32 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="shrink-0">
+        <NavLink to="/" className="shrink-0">
           <img src={logo} alt="Zerodha Logo" className="w-32" />
-        </a>
+        </NavLink>
 
         {/* Desktop Navigation Links (Hidden on Mobile) */}
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex items-center gap-10 text-[#666] text-sm hover:text-gray-800">
-            <a href="#" className="hover:text-blue-600 transition-colors">
+            <NavLink
+              to="/signup"
+              className="hover:text-blue-600 transition-colors"
+            >
               Signup
-            </a>
-            <a href="#" className="hover:text-blue-600 transition-colors">
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="hover:text-blue-600 transition-colors"
+            >
               About
-            </a>
-            <a href="#" className="hover:text-blue-600 transition-colors">
+            </NavLink>
+            <NavLink
+              to="/products"
+              className="hover:text-blue-600 transition-colors"
+            >
               Products
-            </a>
-            <a href="#" className="hover:text-blue-600 transition-colors">
+            </NavLink>
+            <NavLink
+              to="/pricing"
+              className="hover:text-blue-600 transition-colors"
+            >
               Pricing
-            </a>
-            <a href="#" className="hover:text-blue-600 transition-colors">
+            </NavLink>
+            <NavLink
+              to="/support"
+              className="hover:text-blue-600 transition-colors"
+            >
               Support
-            </a>
+            </NavLink>
           </div>
 
           {/* Hamburger Menu Button (Visible on All Screens) */}
@@ -63,28 +79,28 @@ const Navbar = () => {
             {/* Mobile-Only Links (These hide on desktop inside the menu) */}
             <div className="lg:hidden flex flex-col gap-4 mb-4 border-b border-gray-200 pb-6 text-gray-600">
               <div className="grid grid-cols-2 gap-5">
-                <a href="#" className="hover:text-blue-600">
+                <NavLink to="/signup" className="hover:text-blue-600">
                   Signup
-                </a>
-                <a href="#" className="hover:text-blue-600">
+                </NavLink>
+                <NavLink to="/about" className="hover:text-blue-600">
                   About
-                </a>
-                <a href="#" className="hover:text-blue-600">
+                </NavLink>
+                <NavLink to="/products" className="hover:text-blue-600">
                   Products
-                </a>
-                <a href="#" className="hover:text-blue-600">
+                </NavLink>
+                <NavLink to="/pricing" className="hover:text-blue-600">
                   Pricing
-                </a>
-                <a href="#" className="hover:text-blue-600">
+                </NavLink>
+                <NavLink to="/support" className="hover:text-blue-600">
                   Support
-                </a>
+                </NavLink>
               </div>
             </div>
 
             {/* The "Apps" Grid (Visible on Desktop & Mobile Menu) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 border-b border-gray-200 pb-4">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent  rounded transition"
               >
                 <img
@@ -100,9 +116,9 @@ const Navbar = () => {
                     Trading platform
                   </p>
                 </div>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
@@ -118,9 +134,9 @@ const Navbar = () => {
                     Backoffice
                   </p>
                 </div>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
@@ -136,9 +152,9 @@ const Navbar = () => {
                     Trading APIs
                   </p>
                 </div>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
@@ -154,9 +170,9 @@ const Navbar = () => {
                     Mutual funds
                   </p>
                 </div>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50  rounded transition"
               >
                 <img
@@ -170,9 +186,9 @@ const Navbar = () => {
                   </h3>
                   <p className="text-xs text-gray-500 hidden">Mutual funds</p>
                 </div>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
@@ -186,7 +202,7 @@ const Navbar = () => {
                   </h3>
                   <p className="hidden text-xs text-gray-500">Mutual funds</p>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
@@ -195,30 +211,30 @@ const Navbar = () => {
                 <h3 className="text-base font-medium text-gray-800 pb-2 w-fit">
                   Utilities
                 </h3>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Brokerage calculator
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Margin calculator
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Holiday calendar
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Markets
-                </a>
+                </Link>
               </div>
 
               {/* Column 3: Updates */}
@@ -226,30 +242,30 @@ const Navbar = () => {
                 <h3 className="text-base font-medium text-gray-800 pb-2 w-fit">
                   Updates
                 </h3>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Z-Connect blog
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Pulse News
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Circulars / Bulletin
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   IPOs
-                </a>
+                </Link>
               </div>
 
               {/* Column 4: Education */}
@@ -258,24 +274,24 @@ const Navbar = () => {
                   Education
                 </h3>
                 <div className="grid grid-cols-2 gap-8 items-center ">
-                  <a
-                    href="#"
+                  <Link
+                    to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >
                     <img src={varsityLogo} alt="Varsity" className="w-10" />
                     <p className="text-sm font-medium text-gray-600 group-hover:text-blue-600">
                       Varsity
                     </p>
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >
                     <img src={TradingQNA} alt="TradingQnA" className="w-10" />
                     <p className="text-sm font-medium  text-gray-600 group-hover:text-blue-600">
                       TradingQ&A
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

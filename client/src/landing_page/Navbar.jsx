@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 lg:px-24 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-16 lg:px-32 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="shrink-0">
           <img src={logo} alt="Zerodha Logo" className="w-32" />
@@ -58,7 +58,7 @@ const Navbar = () => {
       {/* EXPANDABLE DROPDOWN MENU */}
       {/* This covers the screen on mobile, or drops down on desktop */}
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg border-b border-gray-200 min-h-[50vh] z-40">
+        <div className="absolute top-16 left-0 w-full lg:w-1/2 lg:left-1/2 lg:-translate-x-1/6 bg-white shadow-lg border-b border-gray-200 min-h-[50vh] z-40 overflow-auto max-h-[calc(100vh-64px)] no-scrollbar">
           <div className="container mx-auto px-4 lg:px-20 py-5">
             {/* Mobile-Only Links (These hide on desktop inside the menu) */}
             <div className="lg:hidden flex flex-col gap-4 mb-4 border-b border-gray-200 pb-6 text-gray-600">
@@ -85,11 +85,17 @@ const Navbar = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 border-b border-gray-200 pb-4">
               <a
                 href="#"
-                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 rounded transition"
+                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent  rounded transition"
               >
-                <img src={kiteLogo} alt="Kite" className="w-10 lg:w-16" />
+                <img
+                  src={kiteLogo}
+                  alt="Kite"
+                  className="w-10 lg:w-16 lg:hover:opacity-80"
+                />
                 <div className="lg:text-center">
-                  <h3 className="text-base font-medium text-gray-800">Kite</h3>
+                  <h3 className="text-base font-medium text-gray-800 lg:hover:text-blue-500">
+                    Kite
+                  </h3>
                   <p className="hidden lg:block text-xs text-gray-500">
                     Trading platform
                   </p>
@@ -97,11 +103,15 @@ const Navbar = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 rounded transition"
+                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
-                <img src={consoleLogo} alt="Console" className="w-10 lg:w-16" />
+                <img
+                  src={consoleLogo}
+                  alt="Console"
+                  className="w-10 lg:w-16 lg:hover:opacity-80"
+                />
                 <div className="lg:text-center">
-                  <h3 className="text-base font-medium text-gray-800">
+                  <h3 className="text-base font-medium text-gray-800 lg:hover:text-blue-500">
                     Console
                   </h3>
                   <p className="hidden lg:block text-xs text-gray-500">
@@ -111,15 +121,15 @@ const Navbar = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 rounded transition"
+                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
                   src={kiteConnectLogo}
                   alt="Kite Connect"
-                  className="w-10 lg:w-16"
+                  className="w-10 lg:w-16 lg:hover:opacity-80"
                 />
                 <div className="lg:text-center">
-                  <h3 className="text-base font-medium text-gray-800">
+                  <h3 className="text-base font-medium text-gray-800 lg:hover:text-blue-500">
                     Kite Connect
                   </h3>
                   <p className="hidden lg:block text-xs text-gray-500">
@@ -129,11 +139,17 @@ const Navbar = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 rounded transition"
+                className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
-                <img src={coinLogo} alt="Coin" className="w-10 lg:w-16" />
+                <img
+                  src={coinLogo}
+                  alt="Coin"
+                  className="w-10 lg:w-16 lg:hover:opacity-80"
+                />
                 <div className="lg:text-center">
-                  <h3 className="text-base font-medium text-gray-800">Coin</h3>
+                  <h3 className="text-base font-medium text-gray-800 lg:hover:text-blue-500">
+                    Coin
+                  </h3>
                   <p className="hidden lg:block text-xs text-gray-500">
                     Mutual funds
                   </p>
@@ -157,15 +173,15 @@ const Navbar = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 lg:hidden hover:bg-gray-50 rounded transition"
+                className="flex items-center gap-3 lg:hidden hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
                 <img
                   src={TradingQNA}
                   alt="Trading Q&A"
-                  className="ml-2 w-6 lg:w-12"
+                  className="ml-2 w-6 lg:w-12 lg:hover:opacity-80"
                 />
                 <div>
-                  <h3 className="text-base font-medium text-gray-800">
+                  <h3 className="text-base font-medium text-gray-800 lg:hover:text-blue-500">
                     Trading Q&A
                   </h3>
                   <p className="hidden text-xs text-gray-500">Mutual funds</p>
@@ -179,16 +195,28 @@ const Navbar = () => {
                 <h3 className="text-base font-medium text-gray-800 pb-2 w-fit">
                   Utilities
                 </h3>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Brokerage calculator
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Margin calculator
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Holiday calendar
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Markets
                 </a>
               </div>
@@ -198,16 +226,28 @@ const Navbar = () => {
                 <h3 className="text-base font-medium text-gray-800 pb-2 w-fit">
                   Updates
                 </h3>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Z-Connect blog
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Pulse News
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   Circulars / Bulletin
                 </a>
-                <a href="#" className="text-sm text-gray-600 ">
+                <a
+                  href="#"
+                  className="lg:hover:text-blue-500 text-sm text-gray-600 "
+                >
                   IPOs
                 </a>
               </div>

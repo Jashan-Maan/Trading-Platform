@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4 md:px-16 lg:px-32 h-16 flex items-center justify-between">
+      <div className="lg:container mx-auto px-4 lg:px-32 h-16 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/" className="shrink-0">
           <img src={logo} alt="Zerodha Logo" className="w-32" />

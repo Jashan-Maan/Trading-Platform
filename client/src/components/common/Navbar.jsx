@@ -79,19 +79,39 @@ const Navbar = () => {
             {/* Mobile-Only Links (These hide on desktop inside the menu) */}
             <div className="lg:hidden flex flex-col gap-4 mb-4 border-b border-gray-200 pb-6 text-gray-600">
               <div className="grid grid-cols-2 gap-5">
-                <NavLink to="/signup" className="hover:text-blue-600">
+                <NavLink
+                  onClick={toggleMenu}
+                  to="/signup"
+                  className="hover:text-blue-600"
+                >
                   Signup
                 </NavLink>
-                <NavLink to="/about" className="hover:text-blue-600">
+                <NavLink
+                  onClick={toggleMenu}
+                  to="/about"
+                  className="hover:text-blue-600"
+                >
                   About
                 </NavLink>
-                <NavLink to="/products" className="hover:text-blue-600">
+                <NavLink
+                  onClick={toggleMenu}
+                  to="/products"
+                  className="hover:text-blue-600"
+                >
                   Products
                 </NavLink>
-                <NavLink to="/pricing" className="hover:text-blue-600">
+                <NavLink
+                  onClick={toggleMenu}
+                  to="/pricing"
+                  className="hover:text-blue-600"
+                >
                   Pricing
                 </NavLink>
-                <NavLink to="/support" className="hover:text-blue-600">
+                <NavLink
+                  onClick={toggleMenu}
+                  to="/support"
+                  className="hover:text-blue-600"
+                >
                   Support
                 </NavLink>
               </div>
@@ -100,6 +120,7 @@ const Navbar = () => {
             {/* The "Apps" Grid (Visible on Desktop & Mobile Menu) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 border-b border-gray-200 pb-4">
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent  rounded transition"
               >
@@ -118,6 +139,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -136,6 +158,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -154,6 +177,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -172,6 +196,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50  rounded transition"
               >
@@ -188,6 +213,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
+                onClick={toggleMenu}
                 to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -212,24 +238,28 @@ const Navbar = () => {
                   Utilities
                 </h3>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Brokerage calculator
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Margin calculator
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Holiday calendar
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
@@ -243,24 +273,28 @@ const Navbar = () => {
                   Updates
                 </h3>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Z-Connect blog
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Pulse News
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Circulars / Bulletin
                 </Link>
                 <Link
+                  onClick={toggleMenu}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
@@ -275,6 +309,7 @@ const Navbar = () => {
                 </h3>
                 <div className="grid grid-cols-2 gap-8 items-center ">
                   <Link
+                    onClick={toggleMenu}
                     to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >
@@ -284,6 +319,7 @@ const Navbar = () => {
                     </p>
                   </Link>
                   <Link
+                    onClick={toggleMenu}
                     to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >

@@ -1,11 +1,11 @@
-import CreateTicket from "../../components/support/CreateTicket";
-import Hero from "../../components/support/Hero";
+import QuickInfo from "../../components/support/QuickInfo";
+import Ticket from "../../components/support/Ticket";
 
 const SupportPage = () => {
   return (
     <>
-      <Hero />
-      <CreateTicket />
+      <Ticket />
+      <QuickInfo />
     </>
   );
 };

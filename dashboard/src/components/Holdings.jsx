@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react";
-import { holdings } from "../data/data";
+import axios from "axios";
 
 const Holdings = () => {
+  const [holdings, setHoldings] = useState([]);
+  useEffect(() => {
+    const fetchHoldings = async () => {
+      try {
+        const res = await axios.get("http://localhost:5500/api/v1/holdings", {
+          withCredentials: true,
+        });
+        setHoldings(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchHoldings();
+  }, []);
+
   return (
     <>
       <h3 className="text-xl font-light text-gray-700 mb-6">

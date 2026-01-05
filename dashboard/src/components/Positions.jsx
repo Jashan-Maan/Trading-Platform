@@ -1,15 +1,29 @@
-import { positions } from "../data/data";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Positions = () => {
+  const [positions, setPositions] = useState([]);
+  useEffect(() => {
+    const fetchPositions = async () => {
+      try {
+        const res = await axios.get("http://localhost:5500/api/v1/positions", {
+          withCredentials: true,
+        });
+        setPositions(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPositions();
+  }, []);
+
   return (
     <>
       <h3 className="text-xl font-light text-gray-700 mb-6">
         Positions ({positions.length})
       </h3>
 
-      
       <div className="overflow-x-auto bg-white rounded shadow-sm">
-  
         <table className="w-full border-collapse bg-white min-w-[700px] md:min-w-full">
           <thead>
             <tr className="border-b border-t border-gray-200">

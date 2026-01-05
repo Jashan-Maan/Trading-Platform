@@ -26,6 +26,10 @@ import positionsRoutes from "./routes/positions.routes.js";
 
 app.use("/api/v1/positions", positionsRoutes);
 
+import ordersRoutes from "./routes/orders.route.js";
+
+app.use("/api/v1/orders", ordersRoutes);
+
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
 //     {

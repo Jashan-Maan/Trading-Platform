@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { watchlist } from "../data/data";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 import { MdMoreHoriz } from "react-icons/md";
+import AppContext from "../context/AppContext";
 
 const WatchList = () => {
   return (
@@ -83,9 +84,16 @@ const WatchListItem = ({ stock }) => {
 };
 
 const WatchListActions = ({ uid }) => {
+  const { openBuyWindow } = useContext(AppContext);
+  const handleBuyClick = () => {
+    openBuyWindow(uid);
+  };
   return (
     <span className="absolute top-0 right-0 h-full w-[60%] bg-white flex items-center justify-end px-4 gap-2 shadow-sm z-20">
-      <button className="bg-blue-500 text-white rounded-[2px] px-3 py-1.5 text-xs font-medium hover:bg-blue-600 shadow-sm transition-colors cursor-pointer">
+      <button
+        onClick={handleBuyClick}
+        className="bg-blue-500 text-white rounded-[2px] px-3 py-1.5 text-xs font-medium hover:bg-blue-600 shadow-sm transition-colors cursor-pointer"
+      >
         B
       </button>
 

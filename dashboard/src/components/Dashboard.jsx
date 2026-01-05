@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Apps from "./Apps";
-import Funds from "./Funds";
-import Holdings from "./Holdings";
-import Orders from "./Orders";
-import Positions from "./Positions";
-import Summary from "./Summary";
+import Apps from "../pages/Apps";
+import Funds from "../pages/Funds";
+import Holdings from "../pages/Holdings";
+import Orders from "../pages/Orders";
+import Positions from "../pages/Positions";
+import Summary from "../pages/Summary";
 import WatchList from "./WatchList";
 
 const Dashboard = () => {

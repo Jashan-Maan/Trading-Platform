@@ -4,29 +4,59 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 import { MdMoreHoriz } from "react-icons/md";
 import AppContext from "../context/AppContext";
+import { DoughnutChart } from "./DoughnutChart";
 
 const WatchList = () => {
+  const data = {
+    labels: watchlist.map((stock) => stock.name),
+    datasets: [
+      {
+        label: "Price",
+        data: watchlist.map((stock) => stock.price),
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(153, 102, 255, 0.5)",
+          "rgba(255, 159, 64, 0.5)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
-    <div className="w-full h-full border-r border-gray-200 overflow-y-auto relative bg-white">
-      <div className="flex items-center px-5 py-4 border-b border-gray-200 sticky top-0 bg-white z-10">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
-          className="w-full outline-none text-sm text-gray-700 font-light placeholder-gray-400"
-        />
-        <span className="text-xs text-gray-400 whitespace-nowrap pl-2">
-          {watchlist.length} / 50
-        </span>
-      </div>
+    <>
+      <div className="w-full h-fit border-r border-gray-200 overflow-y-auto relative bg-white pb-5">
+        <div className="flex items-center px-5 py-4 border-b border-gray-200 sticky top-0 bg-white z-10">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
+            className="w-full outline-none text-sm text-gray-700 font-light placeholder-gray-400"
+          />
+          <span className="text-xs text-gray-400 whitespace-nowrap pl-2">
+            {watchlist.length} / 50
+          </span>
+        </div>
 
-      <ul className="list-none">
-        {watchlist.map((stock, index) => (
-          <WatchListItem stock={stock} key={index} />
-        ))}
-      </ul>
-    </div>
+        <ul className="list-none">
+          {watchlist.map((stock, index) => (
+            <WatchListItem stock={stock} key={index} />
+          ))}
+        </ul>
+      </div>
+      <DoughnutChart data={data} />
+    </>
   );
 };
 

@@ -1,8 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { VerticalBarChart } from "../components/VerticalBarChart";
 
 const Holdings = () => {
   const [holdings, setHoldings] = useState([]);
+
+  const labels = holdings.map((stock) => stock.name);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Stock Price",
+        data: holdings.map((stock) => stock.price),
+        backgroundColor: "rgba(75,192,192,1)",
+      },
+    ],
+  };
+
   useEffect(() => {
     const fetchHoldings = async () => {
       try {
@@ -118,6 +133,7 @@ const Holdings = () => {
           <p className="text-xs text-gray-400 mt-2">P&L</p>
         </div>
       </div>
+      <VerticalBarChart data={data} />
     </>
   );
 };

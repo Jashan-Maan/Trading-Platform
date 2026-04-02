@@ -8,7 +8,7 @@ export const createOrder = async (req, res) => {
       price: req.body.price,
       mode: req.body.mode,
     });
-    newOrder.save();
+    await newOrder.save();
     res.status(200).json({
       message: "Order created successfully",
       success: true,

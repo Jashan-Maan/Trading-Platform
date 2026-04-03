@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
+  }),
 );
 
 import holdingsRoutes from "./routes/holdings.routes.js";
@@ -29,6 +29,10 @@ app.use("/api/v1/positions", positionsRoutes);
 import ordersRoutes from "./routes/orders.route.js";
 
 app.use("/api/v1/orders", ordersRoutes);
+
+import userRoutes from "./routes/users.routes.js";
+
+app.use("/api/v1/users", userRoutes);
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -176,5 +180,5 @@ app.use("/api/v1/orders", ordersRoutes);
 // });
 
 app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(`Server running on http://localhost:${PORT}`),
 );

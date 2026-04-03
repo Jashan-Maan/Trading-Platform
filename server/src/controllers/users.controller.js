@@ -1,5 +1,5 @@
 import asyncHandler from "../utils/asyncHandler.js";
-import User from "../models/users.model.js";
+import { User } from "../models/users.model.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import { cookiesOptions } from "../config/cookiesConfig.js";
@@ -110,7 +110,9 @@ export const logoutUser = asyncHandler(async (req, res) => {
 });
 
 export const refreshAccessToken = asyncHandler(async (req, res) => {
-  const incomingRefreshToken = req.cookies?.refreshToken;
+  const incomingRefreshToken =
+    req.cookies?.refreshToken ||
+    req.headers?.authorization?.replace("Bearer ", "");
 
   if (!incomingRefreshToken) {
     throw new ApiError(401, "Refresh Token is missing");
@@ -128,18 +130,36 @@ export const refreshAccessToken = asyncHandler(async (req, res) => {
     }
 
     const newAccessToken = user.generateAccessToken();
+    const newRefreshToken = user.generateRefreshToken();
+
+    user.refreshToken = newRefreshToken;
+    await user.save({ validateBeforeSave: false });
 
     return res
       .status(200)
       .cookie("accessToken", newAccessToken, cookiesOptions)
+      .cookie("refreshToken", newRefreshToken, cookiesOptions)
       .json(
         new ApiResponse(
           200,
-          { accessToken: newAccessToken },
+          { accessToken: newAccessToken, refreshToken: newRefreshToken },
           "Access Token refreshed successfully",
         ),
       );
   } catch (error) {
     throw new ApiError(401, "Invalid or expired Refresh Token");
   }
+});
+
+export const getMe = asyncHandler(async (req, res) => {
+  const { _id, name, email, createdAt } = req.user;
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        { _id, name, email, createdAt },
+        "User information retrieved successfully",
+      ),
+    );
 });

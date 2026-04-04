@@ -1,25 +1,11 @@
 import { Position } from "../models/positions.model.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import ApiResponse from "../utils/ApiResponse.js";
 
-export const getAllPositions = async (req, res) => {
-  try {
-    const positions = await Position.find();
-    if (positions.length === 0) {
-      return res.status(200).json({
-        success: true,
-        message: "No positions found",
-        data: positions,
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      message: "Positions fetched successfully",
-      data: positions,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-      error: error.message,
-    });
-  }
-};
+export const getAllPositions = asyncHandler(async (req, res) => {
+  const positions = await Position.find({ userId: req.user?._id });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, positions, "Positions fetched successfully"));
+});

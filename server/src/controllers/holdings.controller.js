@@ -1,25 +1,10 @@
 import { Holdings } from "../models/holdings.model.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import ApiResponse from "../utils/ApiResponse.js";
 
-export const getAllHoldings = async (req, res) => {
-  try {
-    const holdings = await Holdings.find();
-    if (holdings.length === 0) {
-      return res.status(200).json({
-        success: true,
-        message: "No Holdings found",
-        data: holdings,
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      message: "Holdings fetched successfully",
-      data: holdings,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Internal Server Error",
-      error: error.message,
-    });
-  }
-};
+export const getAllHoldings = asyncHandler(async (req, res) => {
+  const holdings = await Holdings.find({ userId: req.user?._id });
+  return res
+    .status(200)
+    .json(new ApiResponse(200, holdings, "Holdings fetched successfully"));
+});

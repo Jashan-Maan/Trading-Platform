@@ -16,3 +16,14 @@ export const loginSchema = joi
     password: joi.string().required(),
   })
   .required();
+
+export const orderSchema = joi
+  .object({
+    name: joi.string().required(),
+    qty: joi.number().required(),
+    price: joi.number().required(),
+    mode: joi.string().required().valid("BUY", "SELL").messages({
+      "any.only": "Mode must be BUY or SELL",
+    }),
+  })
+  .required();

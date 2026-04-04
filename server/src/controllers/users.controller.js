@@ -4,6 +4,7 @@ import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import { cookiesOptions } from "../config/cookiesConfig.js";
 import jwt from "jsonwebtoken";
+import { seedHoldings, seedPositions } from "../utils/SeedingData.js";
 
 export const registerUser = asyncHandler(async (req, res) => {
   const { name, password, email } = req.body;
@@ -26,6 +27,9 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   newUser.refreshToken = refreshToken;
   await newUser.save({ validateBeforeSave: false });
+
+  await seedHoldings(newUser._id);
+  await seedPositions(newUser._id);
 
   const user = newUser.toObject();
   delete user.password;

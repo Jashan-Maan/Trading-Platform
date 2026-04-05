@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Loading } from "../components/Loading";
 
 const Positions = () => {
   const [positions, setPositions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchPositions = async () => {
       try {
@@ -12,10 +15,16 @@ const Positions = () => {
         setPositions(res.data.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchPositions();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

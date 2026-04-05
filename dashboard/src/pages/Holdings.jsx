@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalBarChart } from "../components/VerticalBarChart";
+import { Loading } from "../components/Loading";
 
 const Holdings = () => {
   const [holdings, setHoldings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const totalInvestment = holdings.reduce((sum, s) => sum + s.avg * s.qty, 0);
+  const currentValue = holdings.reduce((sum, s) => sum + s.price * s.qty, 0);
+  const pnl = currentValue - totalInvestment;
+  const pnlPercent = (pnl / totalInvestment) * 100;
 
   const labels = holdings.map((stock) => stock.name);
 
@@ -27,10 +34,16 @@ const Holdings = () => {
         setHoldings(res.data.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchHoldings();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -114,21 +127,27 @@ const Holdings = () => {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mt-10 px-3 gap-6 md:gap-0">
         <div className="w-full md:w-1/3 text-left">
           <h5 className="text-3xl font-light text-gray-700">
-            29,875.<span className="text-base text-gray-500">55</span>
+            {totalInvestment.toFixed(1)}
           </h5>
           <p className="text-xs text-gray-400 mt-2">Total investment</p>
         </div>
 
         <div className="w-full md:w-1/3 text-left">
           <h5 className="text-3xl font-light text-gray-700">
-            31,428.<span className="text-base text-gray-500">95</span>
+            {currentValue.toFixed(1)}
           </h5>
           <p className="text-xs text-gray-400 mt-2">Current value</p>
         </div>
 
         <div className="w-full md:w-1/3 text-left">
-          <h5 className="text-3xl font-light text-green-500">
-            1,553.40 <span className="text-sm">(+5.20%)</span>
+          <h5
+            className={`text-3xl font-light ${currentValue > totalInvestment ? "text-green-500" : "text-red-500"}`}
+          >
+            {pnl.toFixed(1)}{" "}
+            <span className="text-sm">
+              ({currentValue > totalInvestment ? "+" : ""}
+              {pnlPercent.toFixed(2)}%)
+            </span>
           </h5>
           <p className="text-xs text-gray-400 mt-2">P&L</p>
         </div>

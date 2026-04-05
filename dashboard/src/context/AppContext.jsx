@@ -12,6 +12,7 @@ const AppContext = createContext({
 
 export const AppContextProvider = (props) => {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
   const [isSellWindowOpen, setIsSellWindowOpen] = useState(false);
@@ -49,6 +50,8 @@ export const AppContextProvider = (props) => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     checkUser();
@@ -63,6 +66,7 @@ export const AppContextProvider = (props) => {
         closeSellWindow: handleCloseSellWindow,
         user,
         setUser,
+        isLoading,
       }}
     >
       {props.children}

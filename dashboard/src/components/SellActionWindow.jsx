@@ -11,6 +11,15 @@ const SellActionWindow = ({ uid }) => {
 
   const handleSellClick = async () => {
     try {
+      if (
+        !stockQuantity ||
+        !stockPrice ||
+        stockPrice <= 0 ||
+        stockQuantity <= 0
+      ) {
+        toast.error("Please enter valid quantity and price");
+        return;
+      }
       const res = await axios.post("/orders", {
         name: uid,
         qty: Number(stockQuantity),

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Loading } from "../components/Loading";
 
 const Orders = () => {
   const [orders, setorders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -13,6 +15,8 @@ const Orders = () => {
         setorders(res.data.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchOrders();
@@ -27,6 +31,10 @@ const Orders = () => {
       toast.error("Failed to delete order");
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (orders.length === 0) {
     return (

@@ -4,9 +4,15 @@ import LoginPage from "./components/LoginPage";
 import { Toaster } from "react-hot-toast";
 import { useContext } from "react";
 import AppContext from "./context/AppContext";
+import { Loading } from "./components/Loading";
 
 const App = () => {
-  const { user } = useContext(AppContext);
+  const { user, isLoading } = useContext(AppContext);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Toaster position="top-center" />
@@ -14,7 +20,7 @@ const App = () => {
         {user ? (
           <Route path="/*" element={<Home />} />
         ) : (
-          <Route path="/" element={<LoginPage />} />
+          <Route path="*" element={<LoginPage />} />
         )}
       </Routes>
     </>

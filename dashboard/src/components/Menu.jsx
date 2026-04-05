@@ -18,7 +18,7 @@ const Menu = () => {
 
   const handleMenuClick = (id) => {
     setSelectedMenu(id);
-    setIsMobileMenuOpen(false); 
+    setIsMobileMenuOpen(false);
   };
 
   const handleProfileClick = () => {
@@ -30,10 +30,8 @@ const Menu = () => {
 
   return (
     <div className="flex-1 flex items-center justify-between px-4 md:px-10 py-0 relative">
-      
-      <img src="logo.png" className="w-[20px] md:w-[30px]" alt="Logo" />
+      <img src="kite.png" className="w-[20px] md:w-[30px] mr-2" alt="Logo" />
 
-  
       <div className="hidden md:flex items-center gap-10">
         <ul className="flex gap-8 list-none">
           {menuItems.map((item) => (
@@ -69,9 +67,7 @@ const Menu = () => {
         </div>
       </div>
 
-
       <div className="md:hidden flex items-center gap-4">
-  
         <div className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 text-[0.6rem] flex items-center justify-center font-medium">
           ZU
         </div>
@@ -85,7 +81,6 @@ const Menu = () => {
         </button>
       </div>
 
- 
       {isMobileMenuOpen && (
         <div className="absolute top-12 right-0 w-full bg-white shadow-xl border-t border-gray-100 z-50 flex flex-col md:hidden">
           <ul className="flex flex-col list-none w-full">

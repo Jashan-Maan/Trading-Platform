@@ -5,6 +5,9 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDb from "./db/db.js";
 import { errorHandling } from "./middlewares/errorHandling.middleware.js";
+import { createServer } from "http";
+import { Server } from "socket.io";
+import { watchlist } from "./data/data.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -33,6 +36,44 @@ app.use("/api/v1/orders", ordersRoutes);
 
 app.use(errorHandling);
 
-app.listen(PORT, () =>
+const httpServer = createServer(app);
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: "http://localhost:5173",
+    credentials: true,
+  },
+});
+
+const simulatePrice = (stocks) => {
+  return stocks.map((stock) => {
+    const changePercent = (Math.random() - 0.5) * 2;
+    const newPrice = parseFloat(stock.price + changePercent).toFixed(2);
+    const isLoss = newPrice < stock.price;
+
+    return {
+      ...stock,
+      price: newPrice,
+      changePercent: changePercent.toFixed(2),
+      isLoss,
+    };
+  });
+};
+
+io.on("connection", (socket) => {
+  console.log("Client connected:", socket.id);
+
+  const interval = setInterval(() => {
+    const updatedStocks = simulatePrice(watchlist);
+    socket.emit("watchlist:update", updatedStocks);
+  }, 2000);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+    clearInterval(interval);
+  });
+});
+
+httpServer.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`),
 );

@@ -2,6 +2,9 @@ import accountOpen from "../../assets/account_open.svg";
 import indiaFlag from "../../assets/india-flag.svg";
 
 const Hero = () => {
+  const handleSignUp = () => {
+    window.location.href = "http://localhost:4000/";
+  };
   return (
     <section className="pt-12 md:pt-24 pb-16 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -35,7 +38,7 @@ const Hero = () => {
               aria-label="Signup form"
               className="w-full flex flex-col gap-4 mt-4"
             >
-              <div className="flex items-stretch border border-gray-300 rounded-sm overflow-hidden">
+              {/* <div className="flex items-stretch border border-gray-300 rounded-sm overflow-hidden">
                 <div className="flex items-center gap-3 px-4 py-3 bg-white border-r border-gray-300">
                   <img
                     src={indiaFlag}
@@ -55,13 +58,15 @@ const Hero = () => {
                   pattern="[0-9]{10}"
                   maxLength={10}
                 />
-              </div>
+              </div> */}
               <button
                 type="submit"
+                onClick={handleSignUp}
                 className="mt-6 bg-[#387ed1] hover:bg-[#111]
                 cursor-pointer text-white py-3 w-full md:w-2/3 rounded-sm text-lg font-medium mb-6"
               >
-                Get OTP
+                {/* Get OTP */}
+                Sign Up for free
               </button>
               <p className="text-xs text-gray-500 text-center md:text-left">
                 By proceeding, you agree to the Zerodha{" "}

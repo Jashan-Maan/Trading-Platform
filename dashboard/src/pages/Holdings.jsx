@@ -21,7 +21,7 @@ const Holdings = () => {
   useEffect(() => {
     const fetchHoldings = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/api/v1/holdings", {
+        const res = await axios.get("/holdings", {
           withCredentials: true,
         });
         setHoldings(res.data.data);

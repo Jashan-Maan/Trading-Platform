@@ -6,6 +6,9 @@ import smallCaseLogo from "../../assets/smallcaseLogo.png";
 import Ditto from "../../assets/dittoLogo.png";
 
 const Universe = () => {
+  const handleSignUp = () => {
+    window.location.href = "http://localhost:4000/";
+  };
   return (
     <section className="px-4 md:px-8 lg:px-20 py-16">
       <h1 className="text-2xl text-center mb-6">The Zerodha Universe</h1>
@@ -74,7 +77,10 @@ const Universe = () => {
           </a>
         </div>
       </div>
-      <button className="bg-[#387ed1] text-lg font-semibold text-white px-10 py-2.5 rounded hover:bg-gray-800 transition-colors duration-300 ease-in-out cursor-pointer mx-auto block mt-16">
+      <button
+        onClick={handleSignUp}
+        className="bg-[#387ed1] text-lg font-semibold text-white px-10 py-2.5 rounded hover:bg-gray-800 transition-colors duration-300 ease-in-out cursor-pointer mx-auto block mt-16"
+      >
         Sign Up for free
       </button>
     </section>

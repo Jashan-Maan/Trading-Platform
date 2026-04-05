@@ -6,7 +6,7 @@ const Positions = () => {
   useEffect(() => {
     const fetchPositions = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/api/v1/positions", {
+        const res = await axios.get("/positions", {
           withCredentials: true,
         });
         setPositions(res.data.data);

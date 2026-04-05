@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { watchlist } from "../data/data";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 import { MdMoreHoriz } from "react-icons/md";
@@ -107,7 +106,7 @@ const WatchListItem = ({ stock }) => {
         <div className="w-full flex items-center justify-between gap-2">
           <p
             className={`text-xs ${
-              stock.isDown ? "text-red-500" : "text-gray-600"
+              stock.isLoss ? "text-red-500" : "text-gray-600"
             }`}
           >
             {stock.name}

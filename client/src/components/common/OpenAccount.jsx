@@ -1,4 +1,7 @@
 const OpenAccount = () => {
+  const handleSignUp = () => {
+    window.location.href = "http://localhost:4000/";
+  };
   return (
     <section className="container mx-auto px-4 lg:px-20">
       <div className="flex flex-col items-center justify-center text-center">
@@ -9,7 +12,10 @@ const OpenAccount = () => {
           Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and
           F&O trades.
         </p>
-        <button className="bg-[#387ed1] text-lg font-semibold text-white px-10 py-2.5 rounded hover:bg-gray-800 transition-colors duration-300 ease-in-out cursor-pointer">
+        <button
+          onClick={handleSignUp}
+          className="bg-[#387ed1] text-lg font-semibold text-white px-10 py-2.5 rounded hover:bg-gray-800 transition-colors duration-300 ease-in-out cursor-pointer"
+        >
           Sign Up for free
         </button>
       </div>

@@ -1,18 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { watchlist } from "../data/data";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 import { MdMoreHoriz } from "react-icons/md";
 import AppContext from "../context/AppContext";
 import { DoughnutChart } from "./DoughnutChart";
+import { io } from "socket.io-client";
+
+const socket = io("http://localhost:5500", { withCredentials: true });
 
 const WatchList = () => {
-  const data = {
-    labels: watchlist.map((stock) => stock.name),
+  const [stocks, setStocks] = useState([]);
+
+  const chartData = {
+    labels: stocks.map((stock) => stock.name),
     datasets: [
       {
         label: "Price",
-        data: watchlist.map((stock) => stock.price),
+        data: stocks.map((stock) => stock.price),
         backgroundColor: [
           "rgba(255, 99, 132, 0.5)",
           "rgba(54, 162, 235, 0.5)",
@@ -20,6 +25,9 @@ const WatchList = () => {
           "rgba(75, 192, 192, 0.5)",
           "rgba(153, 102, 255, 0.5)",
           "rgba(255, 159, 64, 0.5)",
+          "rgba(255, 99, 71, 0.5)",
+          "rgba(100, 200, 100, 0.5)",
+          "rgba(200, 100, 200, 0.5)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -28,11 +36,27 @@ const WatchList = () => {
           "rgba(75, 192, 192, 1)",
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
+          "rgba(255, 99, 71, 1)",
+          "rgba(100, 200, 100, 1)",
+          "rgba(200, 100, 200, 1)",
         ],
         borderWidth: 1,
       },
     ],
   };
+
+  useEffect(() => {
+    // Listen for price updates from server
+    socket.on("watchlist:update", (data) => {
+      setStocks(data);
+    });
+
+    // Cleanup on unmount
+    return () => {
+      socket.off("watchlist:update");
+    };
+  }, []);
+
   return (
     <>
       <div className="w-full h-fit border-r border-gray-200 overflow-y-auto relative bg-white pb-5">
@@ -45,17 +69,17 @@ const WatchList = () => {
             className="w-full outline-none text-sm text-gray-700 font-light placeholder-gray-400"
           />
           <span className="text-xs text-gray-400 whitespace-nowrap pl-2">
-            {watchlist.length} / 50
+            {stocks.length} / 50
           </span>
         </div>
 
         <ul className="list-none">
-          {watchlist.map((stock, index) => (
+          {stocks.map((stock, index) => (
             <WatchListItem stock={stock} key={index} />
           ))}
         </ul>
       </div>
-      <DoughnutChart data={data} />
+      <DoughnutChart data={chartData} />
     </>
   );
 };
@@ -91,12 +115,12 @@ const WatchListItem = ({ stock }) => {
           <div className="flex items-center gap-3">
             <span
               className={`text-xs ${
-                stock.isDown ? "text-red-500" : "text-green-500"
+                stock.isLoss ? "text-red-500" : "text-green-500"
               }`}
             >
-              {stock.percent}
+              {stock.changePercent}
             </span>
-            {stock.isDown ? (
+            {stock.isLoss ? (
               <FaChevronDown className="text-red-500 text-xs" />
             ) : (
               <FaChevronUp className="text-green-500 text-xs" />
@@ -114,9 +138,12 @@ const WatchListItem = ({ stock }) => {
 };
 
 const WatchListActions = ({ uid }) => {
-  const { openBuyWindow } = useContext(AppContext);
+  const { openBuyWindow, openSellWindow } = useContext(AppContext);
   const handleBuyClick = () => {
     openBuyWindow(uid);
+  };
+  const handleSellClick = () => {
+    openSellWindow(uid);
   };
   return (
     <span className="absolute top-0 right-0 h-full w-[60%] bg-white flex items-center justify-end px-4 gap-2 shadow-sm z-20">
@@ -127,7 +154,10 @@ const WatchListActions = ({ uid }) => {
         B
       </button>
 
-      <button className="bg-orange-500 text-white rounded-[2px] px-3 py-1.5 text-xs font-medium hover:bg-orange-600 shadow-sm transition-colors cursor-pointer">
+      <button
+        className="bg-orange-500 text-white rounded-[2px] px-3 py-1.5 text-xs font-medium hover:bg-orange-600 shadow-sm transition-colors cursor-pointer"
+        onClick={handleSellClick}
+      >
         S
       </button>
 

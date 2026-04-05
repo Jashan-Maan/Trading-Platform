@@ -3,41 +3,41 @@ import axios from "axios";
 import AppContext from "../context/AppContext";
 import { toast } from "react-hot-toast";
 
-const BuyActionWindow = ({ uid }) => {
+const SellActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
 
-  const { closeBuyWindow } = useContext(AppContext);
+  const { closeSellWindow } = useContext(AppContext);
 
-  const handleBuyClick = async () => {
+  const handleSellClick = async () => {
     try {
       const res = await axios.post("/orders", {
         name: uid,
         qty: Number(stockQuantity),
         price: Number(stockPrice),
-        mode: "BUY",
+        mode: "SELL",
       });
       toast.success("Order placed successfully");
-      closeBuyWindow();
+      closeSellWindow();
     } catch (error) {
       toast.error(error.response?.data?.message || "Order failed");
     }
   };
 
   const handleCancelClick = () => {
-    closeBuyWindow();
+    closeSellWindow();
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs">
       <div
         className="w-[450px] bg-white rounded-lg shadow-2xl overflow-hidden transform transition-all scale-100"
-        id="buy-window"
+        id="sell-window"
         draggable="true"
       >
-        <div className="bg-blue-600 px-6 py-3 text-white flex justify-between items-center">
+        <div className="bg-orange-600 px-6 py-3 text-white flex justify-between items-center">
           <div>
-            <h4 className="font-medium">Buy {uid}</h4>
+            <h4 className="font-medium">Sell {uid}</h4>
             <span className="text-xs text-blue-100">BSE</span>
             <span className="text-xs text-blue-100 ml-2">Regular</span>
           </div>
@@ -45,8 +45,8 @@ const BuyActionWindow = ({ uid }) => {
 
         <div className="p-6 bg-white">
           <div className="flex gap-4 mb-4">
-            <fieldset className="border border-gray-300 rounded px-3 pb-2 pt-1 w-1/2 focus-within:border-blue-500 group">
-              <legend className="text-xs text-gray-500 px-1 group-focus-within:text-blue-500">
+            <fieldset className="border border-gray-300 rounded px-3 pb-2 pt-1 w-1/2 focus-within:border-orange-600 group">
+              <legend className="text-xs text-gray-500 px-1 group-focus-within:text-orange-600">
                 Qty.
               </legend>
               <input
@@ -60,8 +60,8 @@ const BuyActionWindow = ({ uid }) => {
               />
             </fieldset>
 
-            <fieldset className="border border-gray-300 rounded px-3 pb-2 pt-1 w-1/2 focus-within:border-blue-500 group">
-              <legend className="text-xs text-gray-500 px-1 group-focus-within:text-blue-500">
+            <fieldset className="border border-gray-300 rounded px-3 pb-2 pt-1 w-1/2 focus-within:border-orange-600 group">
+              <legend className="text-xs text-gray-500 px-1 group-focus-within:text-orange-600">
                 Price
               </legend>
               <input
@@ -82,12 +82,12 @@ const BuyActionWindow = ({ uid }) => {
                 type="radio"
                 name="type"
                 defaultChecked
-                className="accent-blue-600"
+                className="accent-orange-600"
               />
               <label className="text-sm text-gray-600">Market</label>
             </div>
             <div className="flex items-center gap-2">
-              <input type="radio" name="type" className="accent-blue-600" />
+              <input type="radio" name="type" className="accent-orange-600" />
               <label className="text-sm text-gray-600">Limit</label>
             </div>
           </div>
@@ -103,10 +103,10 @@ const BuyActionWindow = ({ uid }) => {
 
           <div className="flex gap-3">
             <button
-              onClick={handleBuyClick}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded shadow-sm transition-colors"
+              onClick={handleSellClick}
+              className="bg-orange-600 hover:bg-orange-700 text-white font-medium py-2 px-6 rounded shadow-sm transition-colors"
             >
-              Buy
+              Sell
             </button>
             <button
               onClick={handleCancelClick}
@@ -121,4 +121,4 @@ const BuyActionWindow = ({ uid }) => {
   );
 };
 
-export default BuyActionWindow;
+export default SellActionWindow;

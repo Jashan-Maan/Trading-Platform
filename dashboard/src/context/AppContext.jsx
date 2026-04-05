@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import BuyActionWindow from "../components/BuyActionWindow";
+import SellActionWindow from "../components/SellActionWindow";
 import axios from "axios";
 
 const AppContext = createContext({
@@ -13,6 +14,8 @@ export const AppContextProvider = (props) => {
   const [user, setUser] = useState(null);
 
   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
+  const [isSellWindowOpen, setIsSellWindowOpen] = useState(false);
+
   const [selectedStockUID, setSelectedStockUID] = useState("");
 
   const handleOpenBuyWindow = (uid) => {
@@ -22,6 +25,16 @@ export const AppContextProvider = (props) => {
 
   const handleCloseBuyWindow = () => {
     setIsBuyWindowOpen(false);
+    setSelectedStockUID("");
+  };
+
+  const handleOpenSellWindow = (uid) => {
+    setIsSellWindowOpen(true);
+    setSelectedStockUID(uid);
+  };
+
+  const handleCloseSellWindow = () => {
+    setIsSellWindowOpen(false);
     setSelectedStockUID("");
   };
 
@@ -46,12 +59,15 @@ export const AppContextProvider = (props) => {
       value={{
         openBuyWindow: handleOpenBuyWindow,
         closeBuyWindow: handleCloseBuyWindow,
+        openSellWindow: handleOpenSellWindow,
+        closeSellWindow: handleCloseSellWindow,
         user,
         setUser,
       }}
     >
       {props.children}
       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />}
+      {isSellWindowOpen && <SellActionWindow uid={selectedStockUID} />}
     </AppContext.Provider>
   );
 };

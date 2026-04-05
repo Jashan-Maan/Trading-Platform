@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const menuItems = [
   { label: "Dashboard", path: "/", id: "dashboard" },
@@ -27,6 +31,30 @@ const Menu = () => {
 
   const activeClass = "text-orange-500";
   const inactiveClass = "text-gray-600 hover:text-orange-500";
+
+  const { user, setUser } = useContext(AppContext);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("/users/logout", {}, { withCredentials: true });
+      setUser(null);
+      toast.success("Logged out successfully");
+    } catch (error) {
+      toast.error("Logout failed");
+    }
+  };
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsProfileDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="flex-1 flex items-center justify-between px-4 md:px-10 py-0 relative">
@@ -56,14 +84,34 @@ const Menu = () => {
         <div className="h-6 w-px bg-gray-200"></div>
 
         {/* Profile */}
-        <div
-          className="flex items-center gap-2 cursor-pointer hover:opacity-80 relative"
-          onClick={handleProfileClick}
-        >
-          <div className="w-7 h-7 rounded-full bg-purple-100 text-purple-600 text-[0.7rem] flex items-center justify-center font-medium">
-            ZU
+        <div className="relative" ref={dropdownRef}>
+          <div
+            className="flex items-center gap-2 cursor-pointer hover:opacity-80"
+            onClick={handleProfileClick}
+          >
+            <div className="w-7 h-7 rounded-full bg-purple-100 text-purple-600 text-[0.7rem] flex items-center justify-center font-medium">
+              {user?.name?.charAt(0).toUpperCase() || "U"}{" "}
+              {/* 👈 show first letter of name */}
+            </div>
+            <p className="text-xs font-light text-gray-500 uppercase">
+              {user?.name || "User"} {/* 👈 show actual name */}
+            </p>
           </div>
-          <p className="text-xs font-light text-gray-500 uppercase">USERID</p>
+
+          {/* Dropdown */}
+          {isProfileDropdownOpen && (
+            <div className="absolute right-0 top-10 w-40 bg-white shadow-lg border border-gray-100 rounded-md z-50">
+              <div className="px-4 py-3 border-b border-gray-100">
+                <p className="text-xs text-gray-500">{user?.email}</p>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

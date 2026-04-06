@@ -1,9 +1,10 @@
 import accountOpen from "../../assets/account_open.svg";
-import indiaFlag from "../../assets/india-flag.svg";
+// import indiaFlag from "../../assets/india-flag.svg";
+import { DashboardUrl } from "../../constant";
 
 const Hero = () => {
   const handleSignUp = () => {
-    window.location.href = "http://localhost:4000/";
+    window.location.href = DashboardUrl;
   };
   return (
     <section className="pt-12 md:pt-24 pb-16 bg-white">

@@ -26,11 +26,15 @@ Before running the server, please make sure you configure your environment varia
 Create a `.env` file in the root of the `server` folder. Typically, it should specify properties like:
 
 ```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_key
+MONGODB_URL=mongodb://localhost:27017/zerodha
+PORT=5500
+ACCESS_TOKEN_SECRET=
+ACCESS_TOKEN_EXPIRY=15m
+REFRESH_TOKEN_SECRET=
+REFRESH_TOKEN_EXPIRY=7d
+NODE_ENV=development
 ```
-*(Note: Please review your actual implementation files for any additional environment variables you might need.)*
+
 
 ### Installation
 

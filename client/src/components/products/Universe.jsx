@@ -4,10 +4,11 @@ import Tijori from "../../assets/tijori.svg";
 import Streak from "../../assets/streakLogo.png";
 import smallCaseLogo from "../../assets/smallcaseLogo.png";
 import Ditto from "../../assets/dittoLogo.png";
+import { DashboardUrl } from "../../constant";
 
 const Universe = () => {
   const handleSignUp = () => {
-    window.location.href = "http://localhost:4000/";
+    window.location.href = DashboardUrl;
   };
   return (
     <section className="px-4 md:px-8 lg:px-20 py-16">

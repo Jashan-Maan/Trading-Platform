@@ -11,6 +11,7 @@ import { watchlist } from "./data/data.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const clientUrl = process.env.FRONTEND_URL;
 
 connectDb();
 
@@ -19,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:4000",
+    origin: clientUrl,
     credentials: true,
   }),
 );
@@ -40,7 +41,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:4000",
+    origin: clientUrl,
     credentials: true,
   },
 });

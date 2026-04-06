@@ -1,8 +1,9 @@
 import HomeHero from "../../assets/HomeHero.svg";
+import { DashboardUrl } from "../../constant";
 
 const Hero = () => {
   const handleSignUp = () => {
-    window.location.href = "http://localhost:4000/";
+    window.location.href = DashboardUrl;
   };
   return (
     <section className="container mx-auto px-4 pt-16 md:pt-24">

@@ -1,4 +1,4 @@
-import ZerodhaFundHouse from "../../assets/zerodhaFundhouse.png";
+import ZerodhaFundHouse from "../../assets/ZerodhaFundhouse.png";
 import SensiBull from "../../assets/sensibullLogo.svg";
 import Tijori from "../../assets/tijori.svg";
 import Streak from "../../assets/streakLogo.png";

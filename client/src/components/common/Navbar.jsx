@@ -14,6 +14,11 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleNavigation = () => {
+    setIsOpen(false);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="lg:container mx-auto px-4 lg:px-32 h-16 flex items-center justify-between">
@@ -26,45 +31,35 @@ const Navbar = () => {
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex items-center gap-10 text-[#666] text-sm hover:text-gray-800">
             <NavLink
-              onClick={() => {
-                scrollTo(0, 0);
-              }}
+              onClick={handleNavigation}
               to="/signup"
               className="hover:text-blue-600 transition-colors"
             >
               Signup
             </NavLink>
             <NavLink
-              onClick={() => {
-                scrollTo(0, 0);
-              }}
+              onClick={handleNavigation}
               to="/about"
               className="hover:text-blue-600 transition-colors"
             >
               About
             </NavLink>
             <NavLink
-              onClick={() => {
-                scrollTo(0, 0);
-              }}
+              onClick={handleNavigation}
               to="/products"
               className="hover:text-blue-600 transition-colors"
             >
               Products
             </NavLink>
             <NavLink
-              onClick={() => {
-                scrollTo(0, 0);
-              }}
+              onClick={handleNavigation}
               to="/pricing"
               className="hover:text-blue-600 transition-colors"
             >
               Pricing
             </NavLink>
             <NavLink
-              onClick={() => {
-                scrollTo(0, 0);
-              }}
+              onClick={handleNavigation}
               to="/support"
               className="hover:text-blue-600 transition-colors"
             >
@@ -95,50 +90,35 @@ const Navbar = () => {
             <div className="lg:hidden flex flex-col gap-4 mb-4 border-b border-gray-200 pb-6 text-gray-600">
               <div className="grid grid-cols-2 gap-5">
                 <NavLink
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/signup"
                   className="hover:text-blue-600"
                 >
                   Signup
                 </NavLink>
                 <NavLink
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/about"
                   className="hover:text-blue-600"
                 >
                   About
                 </NavLink>
                 <NavLink
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/products"
                   className="hover:text-blue-600"
                 >
                   Products
                 </NavLink>
                 <NavLink
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/pricing"
                   className="hover:text-blue-600"
                 >
                   Pricing
                 </NavLink>
                 <NavLink
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/support"
                   className="hover:text-blue-600"
                 >
@@ -150,10 +130,7 @@ const Navbar = () => {
             {/* The "Apps" Grid (Visible on Desktop & Mobile Menu) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 border-b border-gray-200 pb-4">
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent  rounded transition"
               >
@@ -172,10 +149,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -194,10 +168,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -216,10 +187,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:flex-col hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -238,10 +206,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50  rounded transition"
               >
@@ -258,10 +223,7 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link
-                onClick={() => {
-                  toggleMenu;
-                  scrollTo(0, 0);
-                }}
+                onClick={handleNavigation}
                 to="/"
                 className="flex items-center gap-3 lg:hidden hover:bg-gray-50 lg:hover:bg-transparent rounded transition"
               >
@@ -286,40 +248,28 @@ const Navbar = () => {
                   Utilities
                 </h3>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Brokerage calculator
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Margin calculator
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Holiday calendar
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
@@ -333,40 +283,28 @@ const Navbar = () => {
                   Updates
                 </h3>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Z-Connect blog
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Pulse News
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
                   Circulars / Bulletin
                 </Link>
                 <Link
-                  onClick={() => {
-                    toggleMenu;
-                    scrollTo(0, 0);
-                  }}
+                  onClick={handleNavigation}
                   to="/"
                   className="lg:hover:text-blue-500 text-sm text-gray-600 "
                 >
@@ -381,10 +319,7 @@ const Navbar = () => {
                 </h3>
                 <div className="grid grid-cols-2 gap-8 items-center ">
                   <Link
-                    onClick={() => {
-                      toggleMenu;
-                      scrollTo(0, 0);
-                    }}
+                    onClick={handleNavigation}
                     to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >
@@ -394,10 +329,7 @@ const Navbar = () => {
                     </p>
                   </Link>
                   <Link
-                    onClick={() => {
-                      toggleMenu;
-                      scrollTo(0, 0);
-                    }}
+                    onClick={handleNavigation}
                     to="/"
                     className="flex flex-col items-center lg:items-center gap-2 group"
                   >

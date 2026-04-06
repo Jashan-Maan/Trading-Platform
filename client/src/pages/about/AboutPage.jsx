@@ -5,7 +5,7 @@ const AboutPage = () => {
   return (
     <>
       <Hero />
-      <Team />
+      {/* <Team /> */}
     </>
   );
 };

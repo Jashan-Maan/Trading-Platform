@@ -110,7 +110,7 @@ cd jashan-maan-trading-platform
 Create a `.env` file inside the `server/` directory:
 
 ```env
-MONGODB_URL=mongodb://localhost:27017/zerodha
+MONGODB_URL=mongodb://localhost:27017/Zerodha
 PORT=5500
 
 ACCESS_TOKEN_SECRET=your_access_token_secret_here

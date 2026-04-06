@@ -26,7 +26,7 @@ Before running the server, please make sure you configure your environment varia
 Create a `.env` file in the root of the `server` folder. Typically, it should specify properties like:
 
 ```env
-MONGODB_URL=mongodb://localhost:27017/zerodha
+MONGODB_URL=mongodb://localhost:27017/Zerodha
 PORT=5500
 ACCESS_TOKEN_SECRET=
 ACCESS_TOKEN_EXPIRY=15m
@@ -35,10 +35,10 @@ REFRESH_TOKEN_EXPIRY=7d
 NODE_ENV=development
 ```
 
-
 ### Installation
 
 1. Navigate into the `server` directory (if you are not already there):
+
    ```bash
    cd server
    ```
@@ -64,7 +64,8 @@ npm start
 
 ## Structure & Architecture
 
-The server acts as the central hub: 
+The server acts as the central hub:
+
 - It processes HTTP requests (REST API) coming from the `client` and `dashboard`.
 - It pushes real-time market data to connected clients using `Socket.io`.
 - It handles complex business operations (e.g., executing trades, validating orders) securely behind JWT authentication.

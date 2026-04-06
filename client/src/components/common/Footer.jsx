@@ -141,11 +141,11 @@ const Footer = () => {
         School, J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For
         any complaints pertaining to securities broking please write to{" "}
         <a href="" className="font-medium text-blue-700">
-          complaints@zerodha.com
+          complaints@Zerodha.com
         </a>
         , for DP related to{" "}
         <a href="" className="font-medium text-blue-700">
-          dp@zerodha.com
+          dp@Zerodha.com
         </a>
         . Please ensure you carefully read the Risk Disclosure Document as
         prescribed by SEBI | ICF

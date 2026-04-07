@@ -4,22 +4,31 @@ This directory contains the frontend client application for the Trading Platform
 
 ## Technologies Used
 
-*   **[React](https://react.dev/)**: A JavaScript library for building user interfaces.
-*   **[Vite](https://vitejs.dev/)**: A fast build tool and development server, significantly improving the frontend development experience.
-*   **[TailwindCSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid and customizable UI development.
-*   **[React Router Dom](https://reactrouter.com/)**: Declarative routing for navigating between different views.
-*   **[React Icons](https://react-icons.github.io/react-icons/)**: A collection of popular icon libraries accessible as React components.
+- **[React](https://react.dev/)**: A JavaScript library for building user interfaces.
+- **[Vite](https://vitejs.dev/)**: A fast build tool and development server, significantly improving the frontend development experience.
+- **[TailwindCSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid and customizable UI development.
+- **[React Router Dom](https://reactrouter.com/)**: Declarative routing for navigating between different views.
+- **[React Icons](https://react-icons.github.io/react-icons/)**: A collection of popular icon libraries accessible as React components.
+
+## Folder Structure
+
+- **src/**: Contains the source code for the frontend client.
+  - **components/**: Contains reusable React components.
+  - **pages/**: Contains page components.
+  - **services/**: Contains service functions for API calls.
+  - **utils/**: Contains utility functions.
 
 ## Getting Started
 
 ### Prerequisites
 
-*   **Node.js**: Ensure you have Node.js installed (v18 or above is recommended).
-*   **npm**: The Node package manager.
+- **Node.js**: Ensure you have Node.js installed (v18 or above is recommended).
+- **npm**: The Node package manager.
 
 ### Installation
 
 1.  Navigate into the `client` directory (if you are not already there):
+
     ```bash
     cd client
     ```

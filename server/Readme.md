@@ -12,6 +12,17 @@ This directory contains the Node.js backend server for the Trading Platform. It 
 - **[dotenv](https://www.npmjs.com/package/dotenv)**: Module to load environment variables from a `.env` file into `process.env`.
 - **[CORS](https://www.npmjs.com/package/cors) & [cookie-parser](https://www.npmjs.com/package/cookie-parser)**: Middleware libraries for handling Cross-Origin Resource Sharing constraints and parsing HTTP cookies.
 
+## Folder Structure
+
+- **src/**: Contains the source code for the backend server.
+  - **config/**: Contains configuration files.
+  - **controllers/**: Contains controller functions.
+  - **middlewares/**: Contains middleware functions.
+  - **models/**: Contains Mongoose models.
+  - **routes/**: Contains route definitions.
+  - **services/**: Contains service functions.
+  - **utils/**: Contains utility functions.
+
 ## Getting Started
 
 ### Prerequisites

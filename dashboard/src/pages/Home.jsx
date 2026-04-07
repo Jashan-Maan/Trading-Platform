@@ -3,11 +3,11 @@ import TopBar from "../components/TopBar";
 
 const Home = () => {
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden bg-white">
+    <div className="h-screen w-full flex flex-col bg-white">
       <div className="shrink-0">
         <TopBar />
       </div>
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1">
         <Dashboard />
       </div>
     </div>

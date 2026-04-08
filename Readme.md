@@ -203,7 +203,7 @@ npm run dev
 ```
 Register
   → Password hashed with bcrypt (10 salt rounds)
-  → Access token (15m) + Refresh token (7d) generated
+  → Access token (1d) + Refresh token (7d) generated
   → Both tokens stored in httpOnly cookies
   → Dummy holdings + positions seeded for new user
 

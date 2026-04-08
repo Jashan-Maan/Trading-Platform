@@ -13,6 +13,14 @@ This directory contains the dashboard application for the Trading Platform. It i
 - **[React Router Dom](https://reactrouter.com/)**: Declarative routing for navigating between different views.
 - **[react-hot-toast](https://react-hot-toast.com/)**: Lightweight notifications for the React app.
 
+## Folder Structure
+
+- **src/**: Contains the source code for the dashboard application.
+  - **components/**: Contains reusable React components.
+  - **pages/**: Contains page components.
+  - **services/**: Contains service functions for API calls.
+  - **utils/**: Contains utility functions.
+
 ## Getting Started
 
 ### Prerequisites

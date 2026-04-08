@@ -137,40 +137,23 @@ export const positions = [
 
 // watchlist
 export const watchlist = [
-  {
-    name: "INFY",
-    price: 1555.45,
-  },
-  {
-    name: "ONGC",
-    price: 116.8,
-  },
-  {
-    name: "TCS",
-    price: 3194.8,
-  },
-  {
-    name: "KPITTECH",
-    price: 266.45,
-  },
-  {
-    name: "QUICKHEAL",
-    price: 308.55,
-  },
-  {
-    name: "WIPRO",
-    price: 577.75,
-  },
-  {
-    name: "M&M",
-    price: 779.8,
-  },
-  {
-    name: "RELIANCE",
-    price: 2112.4,
-  },
-  {
-    name: "HUL",
-    price: 512.4,
-  },
+  { name: "INFY", price: 1346.9 },
+  { name: "ONGC", price: 285.85 },
+  { name: "TCS", price: 2561.1 },
+  { name: "KPITTECH", price: 720.4 },
+  { name: "QUICKHEAL", price: 159.35 },
+  { name: "WIPRO", price: 203.59 },
+  { name: "M&M", price: 3212.5 },
+  { name: "RELIANCE", price: 1349.4 },
+  { name: "HUL", price: 2145.0 },
+  // --- New Additions ---
+  { name: "HDFCBANK", price: 816.1 },
+  { name: "SBIN", price: 1061.45 },
+  { name: "ICICIBANK", price: 1309.2 },
+  { name: "TATAMOTORS", price: 334.75 },
+  { name: "ADANIENT", price: 2043.8 },
+  { name: "BHARTIARTL", price: 1861.6 },
+  { name: "LT", price: 4005.9 },
+  { name: "TITAN", price: 4382.2 },
+  { name: "JIOFIN", price: 243.96 },
 ];

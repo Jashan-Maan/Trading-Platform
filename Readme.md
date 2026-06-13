@@ -9,18 +9,18 @@ A full-stack trading platform built as a clone of Zerodha — India's largest st
 This is a monorepo with three separate applications:
 
 ```
-jashan-maan-trading-platform/
-├── client/       → Public marketing website (React + Vite)
-├── dashboard/    → Trader's dashboard (React + Vite)
-└── server/       → REST API + WebSocket backend (Node.js + Express)
+Trading Platform/
+├── client/       → Public marketing website (React + Vite + Tailwind CSS v4)
+├── dashboard/    → Trader's dashboard (React + Vite + Tailwind CSS v4)
+└── server/       → REST API + WebSocket backend (Node.js + Express 5)
 ```
 
 **Ports (local development)**
-| App | Port |
-|---|---|
-| Client | http://localhost:3000 |
-| Dashboard | http://localhost:4000 |
-| Server | http://localhost:5500 |
+| App       | Port                    |
+|-----------|-------------------------|
+| Client    | http://localhost:3000   |
+| Dashboard | http://localhost:4000   |
+| Server    | http://localhost:5500   |
 
 ---
 
@@ -42,8 +42,9 @@ jashan-maan-trading-platform/
 - **Holdings** — view all stock holdings with live P&L, current value, and investment summary
 - **Positions** — view all open intraday positions
 - **Orders** — full order history with cancel functionality
+- **Funds** — account balance and fund summary
 - **Buy/Sell windows** — place BUY or SELL orders for any stock in the watchlist
-- **Portfolio charts** — Doughnut chart (watchlist) and Bar chart (holdings)
+- **Portfolio charts** — Doughnut chart (watchlist) and Vertical Bar chart (holdings)
 - **User profile dropdown** — shows name, email, and logout button
 
 ### Backend
@@ -53,41 +54,57 @@ jashan-maan-trading-platform/
 - Global error handling middleware
 - Auto-seeds dummy holdings and positions for every new user
 - User data isolation — every user only sees their own data
+- Socket.io WebSocket server for live price simulation
 
 ### Client (Marketing Site)
 
 - Home, About, Products, Pricing, Support pages
-- Fully responsive with Tailwind CSS
+- Fully responsive with Tailwind CSS v4
 - Signup page with account opening information
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Frontend (Client & Dashboard)**
+### Frontend — Client (Marketing Site)
 
-- React 19
-- Vite
-- Tailwind CSS v4
-- React Router DOM v7
-- Axios
-- Socket.io Client
-- Chart.js + react-chartjs-2
-- React Hot Toast
-- React Icons
+| Package              | Version  |
+|----------------------|----------|
+| React                | ^19.2.0  |
+| Vite                 | ^7.x     |
+| Tailwind CSS         | ^4.1.17  |
+| React Router DOM     | ^7.9.6   |
+| React Icons          | ^5.5.0   |
 
-**Backend**
+### Frontend — Dashboard (Trading App)
 
-- Node.js
-- Express 5
-- MongoDB + Mongoose
-- Socket.io
-- JSON Web Token (jsonwebtoken)
-- bcrypt
-- Joi
-- cookie-parser
-- dotenv
-- cors
+| Package              | Version  |
+|----------------------|----------|
+| React                | ^19.2.0  |
+| Vite                 | ^7.x     |
+| Tailwind CSS         | ^4.1.18  |
+| React Router DOM     | ^7.11.0  |
+| Axios                | ^1.13.2  |
+| Socket.io Client     | ^4.8.3   |
+| Chart.js             | ^4.5.1   |
+| react-chartjs-2      | ^5.3.1   |
+| React Hot Toast      | ^2.6.0   |
+| React Icons          | ^5.5.0   |
+
+### Backend
+
+| Package              | Version  |
+|----------------------|----------|
+| Node.js              | v18+     |
+| Express              | ^5.2.1   |
+| MongoDB + Mongoose   | ^9.1.1   |
+| Socket.io            | ^4.8.3   |
+| jsonwebtoken         | ^9.0.3   |
+| bcrypt               | ^6.0.0   |
+| Joi                  | ^18.1.2  |
+| cookie-parser        | ^1.4.7   |
+| dotenv               | ^17.2.3  |
+| cors                 | ^2.8.5   |
 
 ---
 
@@ -96,13 +113,13 @@ jashan-maan-trading-platform/
 ### Prerequisites
 
 - Node.js v18+
-- MongoDB running locally
+- MongoDB (local or Atlas)
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/jashan-maan-trading-platform.git
-cd jashan-maan-trading-platform
+git clone https://github.com/Jashan-Maan/Trading-Platform.git
+cd Trading-Platform
 ```
 
 ### 2. Set up environment variables
@@ -110,17 +127,21 @@ cd jashan-maan-trading-platform
 Create a `.env` file inside the `server/` directory:
 
 ```env
-MONGODB_URL=mongodb://localhost:27017/Zerodha
 PORT=5500
+NODE_ENV=development
+
+FRONTEND_URL=http://localhost:4000
+
+MONGODB_URL=mongodb://localhost:27017/Zerodha
 
 ACCESS_TOKEN_SECRET=your_access_token_secret_here
-ACCESS_TOKEN_EXPIRY=15m
+ACCESS_TOKEN_EXPIRY=1d
 
 REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
 REFRESH_TOKEN_EXPIRY=7d
-
-NODE_ENV=development
 ```
+
+> **Note:** `FRONTEND_URL` is used for CORS and Socket.io — set it to the dashboard origin (`http://localhost:4000`).
 
 ### 3. Install dependencies
 
@@ -163,7 +184,7 @@ npm run dev
 ### Users
 
 | Method | Endpoint                      | Description          | Auth |
-| ------ | ----------------------------- | -------------------- | ---- |
+|--------|-------------------------------|----------------------|------|
 | POST   | `/api/v1/users/register`      | Register new user    | ❌   |
 | POST   | `/api/v1/users/login`         | Login user           | ❌   |
 | POST   | `/api/v1/users/logout`        | Logout user          | ✅   |
@@ -172,29 +193,29 @@ npm run dev
 
 ### Holdings
 
-| Method | Endpoint           | Description         | Auth |
-| ------ | ------------------ | ------------------- | ---- |
-| GET    | `/api/v1/holdings` | Get user's holdings | ✅   |
+| Method | Endpoint           | Description          | Auth |
+|--------|--------------------|----------------------|------|
+| GET    | `/api/v1/holdings` | Get user's holdings  | ✅   |
 
 ### Positions
 
-| Method | Endpoint            | Description          | Auth |
-| ------ | ------------------- | -------------------- | ---- |
-| GET    | `/api/v1/positions` | Get user's positions | ✅   |
+| Method | Endpoint            | Description           | Auth |
+|--------|---------------------|-----------------------|------|
+| GET    | `/api/v1/positions` | Get user's positions  | ✅   |
 
 ### Orders
 
-| Method | Endpoint                  | Description       | Auth |
-| ------ | ------------------------- | ----------------- | ---- |
-| POST   | `/api/v1/orders`          | Place a new order | ✅   |
-| GET    | `/api/v1/orders`          | Get user's orders | ✅   |
-| DELETE | `/api/v1/orders/:orderId` | Cancel an order   | ✅   |
+| Method | Endpoint                    | Description        | Auth |
+|--------|-----------------------------|--------------------|------|
+| POST   | `/api/v1/orders`            | Place a new order  | ✅   |
+| GET    | `/api/v1/orders`            | Get user's orders  | ✅   |
+| DELETE | `/api/v1/orders/:orderId`   | Cancel an order    | ✅   |
 
 ### WebSocket Events
 
-| Event              | Direction       | Description                        |
-| ------------------ | --------------- | ---------------------------------- |
-| `watchlist:update` | Server → Client | Live price updates every 2 seconds |
+| Event              | Direction         | Description                          |
+|--------------------|-------------------|--------------------------------------|
+| `watchlist:update` | Server → Client   | Live price updates every 2 seconds   |
 
 ---
 
@@ -231,42 +252,107 @@ Logout
 ## 📁 Folder Structure
 
 ```
-server/src/
-├── config/          → Cookie options, Joi schemas
-├── controllers/     → Business logic for each resource
-├── data/            → Seed data (holdings, positions, watchlist)
-├── db/              → MongoDB connection
-├── middlewares/     → Auth, validation, error handling
-├── models/          → Mongoose schemas
-├── routes/          → Express routers
-└── utils/           → ApiError, ApiResponse, asyncHandler, SeedingData
+server/
+├── src/
+│   ├── config/
+│   │   ├── cookiesConfig.js       → httpOnly cookie options
+│   │   └── joiSchema.js           → Joi validation schemas
+│   ├── controllers/
+│   │   ├── holdings.controller.js
+│   │   ├── orders.controller.js
+│   │   ├── positions.controller.js
+│   │   └── users.controller.js
+│   ├── data/
+│   │   └── data.js                → Watchlist seed data
+│   ├── db/
+│   │   └── db.js                  → MongoDB connection
+│   ├── middlewares/
+│   │   ├── auth.middleware.js
+│   │   ├── errorHandling.middleware.js
+│   │   └── validation.middleware.js
+│   ├── models/
+│   │   ├── holdings.model.js
+│   │   ├── orders.model.js
+│   │   ├── positions.model.js
+│   │   └── users.model.js
+│   ├── routes/
+│   │   ├── holdings.routes.js
+│   │   ├── orders.route.js
+│   │   ├── positions.routes.js
+│   │   └── users.routes.js
+│   ├── utils/
+│   │   ├── ApiError.js
+│   │   ├── ApiResponse.js
+│   │   ├── asyncHandler.js
+│   │   └── SeedingData.js
+│   └── index.js                   → App entry point (Express + Socket.io)
 
-dashboard/src/
-├── components/      → WatchList, BuyActionWindow, SellActionWindow, Menu, Charts
-├── context/         → AppContext (user state, buy/sell window state)
-├── pages/           → Holdings, Positions, Orders, Funds, Summary
-└── data/            → Static seed data (fallback)
+dashboard/
+└── src/
+    ├── components/
+    │   ├── BuyActionWindow.jsx
+    │   ├── Dashboard.jsx
+    │   ├── DoughnutChart.jsx
+    │   ├── Loading.jsx
+    │   ├── LoginPage.jsx
+    │   ├── Menu.jsx
+    │   ├── SellActionWindow.jsx
+    │   ├── TopBar.jsx
+    │   ├── VerticalBarChart.jsx
+    │   └── WatchList.jsx
+    ├── context/
+    │   └── AppContext.jsx          → User state, buy/sell window state
+    ├── pages/
+    │   ├── Apps.jsx
+    │   ├── Funds.jsx
+    │   ├── Holdings.jsx
+    │   ├── Home.jsx
+    │   ├── Orders.jsx
+    │   ├── Positions.jsx
+    │   └── Summary.jsx
+    ├── constants.js
+    └── App.jsx
 
-client/src/
-├── components/      → Navbar, Footer, page sections
-└── pages/           → Home, About, Products, Pricing, Support, Signup
+client/
+└── src/
+    ├── components/
+    │   ├── about/
+    │   ├── common/                → Navbar, Footer
+    │   ├── home/
+    │   ├── pricing/
+    │   ├── products/
+    │   ├── signup/
+    │   └── support/
+    ├── pages/
+    │   ├── about/
+    │   ├── home/
+    │   ├── pricing/
+    │   ├── products/
+    │   ├── signup/
+    │   ├── support/
+    │   └── PageNotFound.jsx
+    ├── constant.js
+    └── App.jsx
 ```
 
 ---
 
 ## 💡 Key Design Decisions
 
-**Why httpOnly cookies instead of localStorage?**
-httpOnly cookies are inaccessible to JavaScript, protecting tokens from XSS attacks. localStorage is vulnerable to script injection.
+**Why `httpOnly` cookies instead of localStorage?**
+`httpOnly` cookies are inaccessible to JavaScript, protecting tokens from XSS attacks. `localStorage` is vulnerable to script injection.
 
 **Why refresh tokens?**
-Short-lived access tokens (15 min) reduce the risk of token theft. Refresh tokens allow silent re-authentication without requiring the user to log in again.
+Short-lived access tokens (1 day) reduce the risk of token theft. Refresh tokens allow silent re-authentication without requiring the user to log in again.
 
 **Why WebSockets for the watchlist?**
-Polling (repeated HTTP requests every 2 seconds) wastes server resources. WebSockets maintain a single persistent connection and the server pushes updates only when data changes — the same architecture used by real trading platforms.
+Polling (repeated HTTP requests every 2 seconds) wastes server resources. WebSockets maintain a single persistent connection and the server pushes updates as data changes — the same architecture used by real trading platforms.
 
 **Why seed data on register?**
 In a real trading system, holdings and positions are created automatically by an order execution engine. For this demo, seeding on registration gives every new user a fully populated dashboard immediately.
+
+**Why Express 5?**
+Express 5 introduces async error propagation out of the box — thrown errors in async route handlers are automatically forwarded to the global error handler without requiring explicit `try/catch` or `next(err)` calls.
 
 ---
 

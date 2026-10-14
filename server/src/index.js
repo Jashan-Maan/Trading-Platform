@@ -30,6 +30,10 @@ import positionsRoutes from "./routes/positions.routes.js";
 import holdingsRoutes from "./routes/holdings.routes.js";
 import ordersRoutes from "./routes/orders.route.js";
 
+// Server Health Check Route
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+
+// API Routes
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/holdings", holdingsRoutes);
 app.use("/api/v1/positions", positionsRoutes);

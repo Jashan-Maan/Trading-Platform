@@ -6,7 +6,7 @@ import AppContext from "../context/AppContext";
 import { DoughnutChart } from "./DoughnutChart";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5500", { withCredentials: true });
+const socket = io(import.meta.env.VITE_BASE_URL, { withCredentials: true });
 
 const WatchList = () => {
   const [stocks, setStocks] = useState([]);

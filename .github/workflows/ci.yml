@@ -49,7 +49,7 @@ jobs:
       FRONTEND_URL: http://localhost:4000
       NODE_ENV: development
       ACCESS_TOKEN_SECRET: ci-only-access-secret
-      ACCESS_TOKEN_EXPIRY: 15m
+      ACCESS_TOKEN_EXPIRY: 1d
       REFRESH_TOKEN_SECRET: ci-only-refresh-secret
       REFRESH_TOKEN_EXPIRY: 7d
 

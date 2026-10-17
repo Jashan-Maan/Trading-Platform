@@ -15,10 +15,10 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {

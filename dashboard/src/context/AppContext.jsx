@@ -4,7 +4,7 @@ import SellActionWindow from "../components/SellActionWindow";
 import axios from "axios";
 
 const AppContext = createContext({
-  openBuyWindow: (uid) => {},
+  openBuyWindow: () => {},
   closeBuyWindow: () => {},
   user: null,
   setUser: () => {},

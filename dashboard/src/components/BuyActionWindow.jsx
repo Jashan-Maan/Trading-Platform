@@ -20,7 +20,7 @@ const BuyActionWindow = ({ uid }) => {
         toast.error("Please enter valid quantity and price");
         return;
       }
-      const res = await axios.post("/orders", {
+      await axios.post("/orders", {
         name: uid,
         qty: Number(stockQuantity),
         price: Number(stockPrice),

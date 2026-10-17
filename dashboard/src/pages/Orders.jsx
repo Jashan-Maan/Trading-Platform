@@ -27,7 +27,7 @@ const Orders = () => {
       await axios.delete(`/orders/${id}`);
       setorders((prevOrders) => prevOrders.filter((order) => order._id !== id));
       toast.success("Order deleted successfully");
-    } catch (error) {
+    } catch {
       toast.error("Failed to delete order");
     }
   };

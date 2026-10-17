@@ -39,7 +39,7 @@ const Menu = () => {
       await axios.post("/users/logout", {}, { withCredentials: true });
       setUser(null);
       toast.success("Logged out successfully");
-    } catch (error) {
+    } catch {
       toast.error("Logout failed");
     }
   };

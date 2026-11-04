@@ -136,7 +136,7 @@ jobs:
         with:
           context: ./${{ matrix.app }}
           push: true
-          build_args: ${{ matrix.build_args }}
+          build-args: ${{ matrix.build_args }}
           tags: |
             ${{ env.IMAGE }}:${{ github.sha }}
             ${{ env.IMAGE }}:latest

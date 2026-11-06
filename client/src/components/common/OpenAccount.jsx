@@ -18,7 +18,7 @@ const OpenAccount = () => {
           onClick={handleSignUp}
           className="bg-[#387ed1] text-lg font-semibold text-white px-10 py-2.5 rounded hover:bg-gray-800 transition-all duration-300 ease-in-out cursor-pointer"
         >
-          Sign Up for free
+          Start Investment Journey!
         </button>
       </div>
     </section>

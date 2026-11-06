@@ -26,7 +26,7 @@ const ProductPage = () => {
       <RightSection
         imageUrl={Console}
         title="Console"
-        description="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
+        description="The central dashboard for your Zrodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
         url={{ url: "/", title: "Learn more" }}
       />
       <LeftSection
@@ -52,7 +52,7 @@ const ProductPage = () => {
       />
       <p className="text-center text-gray-600 text-xl my-9">
         Want to know more about our technology stack? Check out the{" "}
-        <span className="text-[#387ed1] font-medium ">Zerodha.tech</span> blog.
+        <span className="text-[#387ed1] font-medium ">Zrodha.tech</span> blog.
       </p>
       <Universe />
     </>

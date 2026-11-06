@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="px-4 md:px-10 lg:px-20 pt-16 md:pt-24 border-b border-gray-200 mb-20 pb-20">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl  md:text-[1.75rem] font-medium mb-4">
-          Zerodha Products
+          Zrodha Products
         </h1>
         <h2 className="text-lg md:text-xl text-gray-700 mb-7 leading-relaxed">
           Sleek, modern, and intuitive trading platforms

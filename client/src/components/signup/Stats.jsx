@@ -16,7 +16,7 @@ const Stats = () => {
       desc: 'Committed to transparency — no gimmicks, spam, "gamification", or intrusive push notifications.',
     },
     {
-      title: "The Zerodha universe",
+      title: "The Zrodha universe",
       desc: "More than just an app — gain free access to the entire ecosystem of our partner products.",
     },
   ];
@@ -31,7 +31,7 @@ const Stats = () => {
             className="w-full max-w-[450px]"
           />
           <h1 className="text-2xl font-medium text-[#444] mt-10 leading-snug">
-            Benefits of opening a Zerodha demat account
+            Benefits of opening a Zrodha demat account
           </h1>
         </div>
 

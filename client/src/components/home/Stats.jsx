@@ -15,8 +15,8 @@ const Stats = () => {
               Customer-first always
             </h2>
             <p className="text-gray-600 text-base leading-relaxed">
-              That's why 1.6+ crore customers trust Zerodha with ~ ₹6 lakh
-              crores of equity investments, making us India’s largest broker;
+              That's why 1.6+ crore customers trust Zrodha with ~ ₹6 lakh crores
+              of equity investments, making us India’s largest broker;
               contributing to 15% of daily retail exchange volumes in India.
             </p>
           </div>
@@ -32,7 +32,7 @@ const Stats = () => {
           </div>
           <div className="mb-8">
             <h2 className="text-xl font-medium text-gray-800 mb-3">
-              The Zerodha universe
+              The Zrodha universe
             </h2>
             <p className="text-gray-600 text-base leading-relaxed">
               Not just an app, but a whole ecosystem. Our investments in 30+

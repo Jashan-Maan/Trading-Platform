@@ -70,7 +70,7 @@ const Hero = () => {
                 Sign Up for free
               </button>
               <p className="text-xs text-gray-500 text-center md:text-left">
-                By proceeding, you agree to the Zerodha{" "}
+                By proceeding, you agree to the Zrodha{" "}
                 <span className="text-[#387ed1] font-medium">terms</span> and{" "}
                 <span className="text-[#387ed1] font-medium">
                   privacy policy

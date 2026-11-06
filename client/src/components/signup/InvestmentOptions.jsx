@@ -29,7 +29,7 @@ const InvestmentOptions = () => {
   return (
     <section className="container mx-auto px-4 lg:px-20">
       <h1 className="text-2xl font-medium text-center text-[#444] mb-16 md:mb-20 leading-snug">
-        Investment options With Zerodha demat account
+        Investment options With Zrodha demat account
       </h1>
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-16 md:gap-x-16">

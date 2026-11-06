@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="lg:container mx-auto px-4 lg:px-32 h-16 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/" className="shrink-0">
-          <img src={logo} alt="Zerodha Logo" className="w-32" />
+          <img src={logo} alt="Zrodha Logo" className="w-32" />
         </NavLink>
 
         {/* Desktop Navigation Links (Hidden on Mobile) */}

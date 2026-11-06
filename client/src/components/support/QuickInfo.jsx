@@ -27,7 +27,7 @@ const QuickInfo = () => {
       ],
     },
     {
-      title: "Your Zerodha Account",
+      title: "Your Zrodha Account",
       icon: <CgProfile className="text-xl text-[#387ed1]" />,
       links: [
         "Your Profile",

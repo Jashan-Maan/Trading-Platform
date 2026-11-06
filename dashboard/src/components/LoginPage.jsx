@@ -157,7 +157,7 @@ const LoginPage = () => {
 
       <p className="text-center text-gray-300 mt-20 flex items-center gap-2">
         <SiZerodha className="" />
-        <span className="font-semibold">Zerodha</span>
+        <span className="font-semibold">Zrodha</span>
       </p>
     </section>
   );

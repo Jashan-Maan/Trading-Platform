@@ -12,7 +12,7 @@ const StepsToOpen = () => {
     <section className="bg-gray-200/20  py-8 md:py-12 ">
       <div className="container mx-auto px-4 md:px-10 lg:px-20">
         <h1 className=" text-xl md:text-3xl text-gray-800 font-medium  text-center mb-16 md:mb-12 leading-snug">
-          Steps to open a demat account with Zerodha
+          Steps to open a demat account with Zrodha
         </h1>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-24">

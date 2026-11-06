@@ -8,7 +8,7 @@ const OpenAccount = () => {
     <section className="container mx-auto px-4 lg:px-20">
       <div className="flex flex-col items-center justify-center text-center">
         <h1 className="text-2xl font-medium mb-6 leading-tight text-gray-800">
-          Open a Zerodha account
+          Open a Zrodha account
         </h1>
         <p className="text-gray-600 text-base mb-8">
           Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and

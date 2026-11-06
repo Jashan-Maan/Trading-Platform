@@ -44,8 +44,8 @@ const Footer = () => {
         "Philosophy",
         "Press & media",
         "Careers",
-        "Zerodha Cares (CSR)",
-        "Zerodha.tech",
+        "Zrodha Cares (CSR)",
+        "Zrodha.tech",
         "Open source",
       ],
     },
@@ -83,7 +83,7 @@ const Footer = () => {
             <img className="w-40" src={logo} alt="logo" loading="lazy" />
           </a>
           <p className="mt-6 text-sm text-gray-700">
-            &copy; 2010-{currentYear}, Zerodha
+            &copy; 2010-{currentYear}, Zrodha
             <br className="hidden md:block" /> Broking Ltd.
           </p>
           <p className="mt-1 text-sm text-gray-700">All rights reserved.</p>
@@ -134,18 +134,18 @@ const Footer = () => {
         ))}
       </div>
       <p className="text-left text-[10px] text-gray-500/80 tracking-wide">
-        Zerodha Broking Ltd.: Member of NSE, BSE & MCX - SEBI Registration no.:
-        INZ000031633 CDSL/NSDL: Depository services through Zerodha Broking Ltd.
-        - SEBI Registration no.: IN-DP-431-2019 Registered Address: Zerodha
+        Zrodha Broking Ltd.: Member of NSE, BSE & MCX - SEBI Registration no.:
+        INZ000031633 CDSL/NSDL: Depository services through Zrodha Broking Ltd.
+        - SEBI Registration no.: IN-DP-431-2019 Registered Address: Zrodha
         Broking Ltd., #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public
         School, J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For
         any complaints pertaining to securities broking please write to{" "}
         <a href="" className="font-medium text-blue-700">
-          complaints@Zerodha.com
+          complaints@Zrodha.com
         </a>
         , for DP related to{" "}
         <a href="" className="font-medium text-blue-700">
-          dp@Zerodha.com
+          dp@Zrodha.com
         </a>
         . Please ensure you carefully read the Risk Disclosure Document as
         prescribed by SEBI | ICF
@@ -201,7 +201,7 @@ const Footer = () => {
         allotment. In case of non allotment the funds will remain in your bank
         account. As a business we don't give stock tips, and have not authorized
         anyone to trade on behalf of others. If you find anyone claiming to be
-        part of Zerodha and offering such services, please{" "}
+        part of Zrodha and offering such services, please{" "}
         <a href="" className="font-medium text-blue-700">
           create a ticket here
         </a>
